@@ -9,4 +9,4 @@ development:
   database: punchy_development
 
 production:
-  url: "mysql://t0pzo4mbdhw1k1j3:rbt5lc4yyceeazij@y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dsywob6emgvfo7jx"
+  url: "mysql2://t0pzo4mbdhw1k1j3:rbt5lc4yyceeazij@y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dsywob6emgvfo7jx"
