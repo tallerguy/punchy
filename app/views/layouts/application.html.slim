@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Punchy
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+
+    / = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    / = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    = render partial: 'common/navbar' if current_user.present?
+    .container
+      main.main
+        .mt-3
+          = render partial: 'common/breadcrumb'
+        = custom_bootstrap_flash
+        .row
+          .col-12.my-3
+            = yield

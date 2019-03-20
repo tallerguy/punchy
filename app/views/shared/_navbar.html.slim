@@ -1,0 +1,20 @@
+nav.navbar.navbar-expand-lg.navbar-light
+  .container
+    = link_to 'Punchy', authenticated_root_path, class: 'navbar-brand'
+    button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#customerNav" aria-controls="customerNav" aria-expanded="false" aria-label="Toggle navigation"
+      span class="navbar-toggler-icon"
+    #customerNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item = link_to 'Punches', punches_path, class: 'nav-link text-light'
+      ul.nav.navbar-nav.ml-auto
+        li.dropdown
+          a class="nav-link dropdown-toggle text-light font-bernadette" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            span.mr-2 = truncate(current_user.name, length: 25, separator: ' ')
+            span.caret
+          .dropdown-menu aria-labelledby="navbarDropdown"
+            = link_to edit_profile_path, class: 'dropdown-item'
+              i.fa.fa-user-circle-o.mr-1
+              | Profile
+            = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do
+              i.fa.fa-sign-out.mr-1
+              | Logout

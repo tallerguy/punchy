@@ -1,0 +1,2 @@
+class ClockIn < Punch
+end
