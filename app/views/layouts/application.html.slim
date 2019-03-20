@@ -13,11 +13,11 @@ html
     / = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render partial: 'common/navbar' if current_user.present?
+    = render partial: 'shared/navbar' if current_user.present?
     .container
       main.main
         .mt-3
-          = render partial: 'common/breadcrumb'
+          = render partial: 'shared/breadcrumb'
         = custom_bootstrap_flash
         .row
           .col-12.my-3

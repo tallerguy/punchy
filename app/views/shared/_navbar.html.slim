@@ -1,14 +1,14 @@
-nav.navbar.navbar-expand-lg.navbar-light
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container
     = link_to 'Punchy', authenticated_root_path, class: 'navbar-brand'
     button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#customerNav" aria-controls="customerNav" aria-expanded="false" aria-label="Toggle navigation"
       span class="navbar-toggler-icon"
     #customerNav.collapse.navbar-collapse
       ul.navbar-nav
-        li.nav-item = link_to 'Punches', punches_path, class: 'nav-link text-light'
+        li.nav-item = link_to 'Punches', punches_path, class: 'nav-link'
       ul.nav.navbar-nav.ml-auto
         li.dropdown
-          a class="nav-link dropdown-toggle text-light font-bernadette" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             span.mr-2 = truncate(current_user.name, length: 25, separator: ' ')
             span.caret
           .dropdown-menu aria-labelledby="navbarDropdown"

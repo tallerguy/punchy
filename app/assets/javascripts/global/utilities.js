@@ -3,6 +3,7 @@ var Punchy = Punchy || {};
 Punchy.Utilities = (function($, _){
 
   // Constants
+  var DATETIME_PICKER_CLASS = '.datetime-picker';
   var VALIDATION_CLASS = '.validated-form';
 
   // Public Functions
@@ -12,7 +13,7 @@ Punchy.Utilities = (function($, _){
   };
 
   var setupDateTimePicker = function(element, options) {
-    var _element = element || DATE_PICKER_CLASS;
+    var _element = element || DATETIME_PICKER_CLASS;
 
     $(_element).datetimepicker();;
   };

@@ -16,7 +16,6 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require jquery.validate
-//= require custom_validators
 //= require underscore
 //= require moment
 //= require tempusdominus-bootstrap-4

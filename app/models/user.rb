@@ -12,9 +12,15 @@ class User < ApplicationRecord
   has_many :clock_ins
   has_many :clock_outs
 
-  state_machine :state, initial: :active do
-    event :deactivate do
-      transition to: :deactivate, from: :active
+  attr_accessor :current_password
+
+  state_machine :state, initial: :registered do
+    event :clock_in do
+      transition to: :clocked_in, from: [:registered, :clocked_out]
+    end
+
+    event :clock_out do
+      transition to: :clocked_out, from: :clocked_in
     end
 
     after_transition do |user, transition|
@@ -29,4 +35,13 @@ class User < ApplicationRecord
       user.save
     end
   end
+
+  # Class Methods
+
+  # Instance Methods
+
+  def name
+    [first_name, last_name].join(' ')
+  end
+
 end

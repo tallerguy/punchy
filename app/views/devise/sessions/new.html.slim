@@ -1,14 +1,16 @@
 = render layout: 'devise/shared/wrapper' do
-  h2 Log in
+  p Log in
   = form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'validated-form' } do |f|
     .form-group
       .row
         .col-md-12
-          = f.email_field :email, autofocus: true, class: 'required', placeholder: 'Email'
+          = f.email_field :email, autofocus: true, class: 'form-control required', placeholder: 'Email'
     .form-group
       .row
         .col-md-12
-          = f.password_field :password, autocomplete: "off", class: 'required', placeholder: 'Password'
+          = f.password_field :password, autocomplete: "off", class: 'form-control required', placeholder: 'Password'
+      .row
+        .col-md-12
           = link_to 'Forgot Password?', new_user_password_path, class: 'text-success mt-2'
     .form-group
       .actions

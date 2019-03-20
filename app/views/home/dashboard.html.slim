@@ -1,0 +1,19 @@
+.row
+  .col-md-4
+    .card
+      .card-header Punch
+      .card-body.text-center
+        = punch_link
+  .col-md-6
+    .card
+      .card-header Resent Punches
+      .card-body.text-center
+        - if current_user.punches.present?
+          ul.list-group
+            - current_user.punches.order('punched_at desc').limit(5).each do |punch|
+              li.list-group-item.clearfix
+                span.pull-left = punch.decorate.type_badge
+                span.pull-right = punch.title
+          = link_to 'See All Punches', punches_path, class: 'btn btn-info mt-4'
+        - else
+          p.lead No Punches Done

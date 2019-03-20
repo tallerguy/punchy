@@ -1,0 +1,23 @@
+.card
+  .card-header Punches
+  .card-body
+    table.table
+      thead
+        tr
+          th Type
+          th Punched At
+          th Created On
+          th Actions
+      tbody
+        - @punches.each do |punch|
+          tr
+            td = punch.decorate.type_badge
+            td = punch.title
+            td = punch.decorate.formatted_date(punch.created_at)
+            td
+              = link_to edit_punch_path(punch), class: 'btn btn-primary' do
+                i.fa.fa-pencil
+              = link_to edit_punch_path(punch), class: 'btn btn-danger ml-3' do
+                i.fa.fa-trash
+.mt-4.pull-right
+  = will_paginate @punches, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer

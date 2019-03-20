@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-md-3
+      .nav.flex-column.nav-pills aria-orientation="vertical" role="tablist"
+        = link_to 'Profile', '#profile-info', class: 'nav-link active', id: 'profile-info-tab', aria: { controls: "profile-info", selected: "true" }, data: { toggle: "pill" }, role: "tab"
+        = link_to 'Change Password', '#password-change', class: 'nav-link', id: 'password-change-tab', aria: { controls: "password-change", selected: "false" }, data: { toggle: "pill" }, role: "tab"
+    .col-md-6
+      .tab-content
+        #profile-info.tab-pane.fade.show.active aria-labelledby="profile-info-tab" role="tabpanel"
+          .card
+            .card-body
+              = render 'form'
+        #password-change.tab-pane.fade aria-labelledby="password-change-tab" role="tabpanel"
+          .card
+            .card-body
+              = form_for current_user, url: change_password_profile_path, html: { class: 'form-horizontal validated-form' } do |f|
+                .form-group
+                  .col-sm-12
+                    = f.password_field :current_password, class: 'form-control required', placeholder: 'Current Password'
+                hr.dashed
+                .form-group
+                  .col-sm-12
+                    = f.password_field :password, class: 'form-control required', placeholder: 'New Password'
+                .form-group
+                  .col-sm-12
+                    = f.password_field :password_confirmation, class: 'form-control required',  placeholder: 'Confirm New Password'
+                .form-group
+                  .col-sm-12
+                    .actions
+                      = f.submit 'Change Password', class: "btn btn-success col-md-12"
