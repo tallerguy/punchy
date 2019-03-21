@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Punchy is an application to record punches (ClockIn and ClockOut) of employees in an organization.
 
-Things you may want to cover:
+## System Specification:
 
-* Ruby version
+1. Ruby version  
+  **2.5.3** (Mentioned in .ruby-version file)
 
-* System dependencies
+2. Rails Version  
+  **5.2.2**
 
-* Configuration
+3. System dependencies  
+  * **mysql >= 5.7**
 
-* Database creation
 
-* Database initialization
+4. Database creation  
+  `rails db:create`  
+  `rails db:migrate`
 
-* How to run the test suite
+5. Deployment instructions  
+  Deployed to Heroku: https://himama-punchy.herokuapp.com
 
-* Services (job queues, cache servers, search engines, etc.)
+6. Usage Instructions  
+create user by signing-up. Once you log in, you can
+* Clock work by clicking on the button on the dashboard
+* Click on `punches` menu item to see all the punches made by you.
+* Access the profile form by click on the dropdown menu from your name
+* Generate pin in the profile page
+* Click on `Lock Screen` to log in using just your pin
 
-* Deployment instructions
-
-* ...
