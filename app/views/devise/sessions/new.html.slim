@@ -9,9 +9,6 @@
       .row
         .col-md-12
           = f.password_field :password, autocomplete: "off", class: 'form-control required', placeholder: 'Password'
-      .row
-        .col-md-12
-          = link_to 'Forgot Password?', new_user_password_path, class: 'text-success mt-2'
     .form-group
       .actions
         = f.submit "Login", class: 'btn btn-success'

@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :state_changes
-  has_many :punches
+  has_many :punches, dependent: :destroy
   has_many :clock_ins
   has_many :clock_outs
 
