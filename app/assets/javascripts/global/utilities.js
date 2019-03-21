@@ -3,7 +3,7 @@ var Punchy = Punchy || {};
 Punchy.Utilities = (function($, _){
 
   // Constants
-  var DATETIME_PICKER_CLASS = '.datetime-picker';
+  var DATE_TIME_PICKER_CLASS = '.date-range-picker';
   var VALIDATION_CLASS = '.validated-form';
 
   // Public Functions
@@ -13,15 +13,25 @@ Punchy.Utilities = (function($, _){
   };
 
   var setupDateTimePicker = function(element, options) {
-    var _element = element || DATETIME_PICKER_CLASS;
+    var _element = element || DATE_TIME_PICKER_CLASS;
 
-    $(_element).datetimepicker();;
+    var updateOptions = $.extend( {}, options, {
+      timePicker: true,
+      timePicker24Hour: true,
+      singleDatePicker: true,
+      maxDate: moment(),
+      opens: 'right',
+      locale: {
+        format: 'll hh:mm A'
+      }
+    });
+
+    $(_element).daterangepicker(updateOptions);
   };
 
   var setupPopovers = function() {
     $('[data-toggle="popover"]').popover();
   };
-
 
   var init = function(){
     setupValidation();
@@ -32,6 +42,7 @@ Punchy.Utilities = (function($, _){
   return {
     init: init,
     setupValidation: setupValidation,
+    setupDateTimePicker: setupDateTimePicker
   }
 
 })(jQuery, _);

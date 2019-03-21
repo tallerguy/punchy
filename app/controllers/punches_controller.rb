@@ -1,9 +1,14 @@
 class PunchesController < ApplicationController
 
+  before_action :set_punch, except: [:index, :create]
+
   def index
-    @punches = current_user.punches.page(params[:page])
+    @punches = current_user.punches.order('punched_at desc').page(params[:page])
   end
 
+  # We store a punch based on the users current state
+  # The punched at time is equal to the DateTime now.
+  # This can then be edited by the user if needed
   def create
     @punch = current_user.punches.build(punched_at: DateTime.now)
 
@@ -19,14 +24,33 @@ class PunchesController < ApplicationController
   def edit
   end
 
-  def udpate
+  def update
+    if @punch.update_attributes(punch_params)
+      flash[:success] = "Punch updated!"
+    else
+      flash[:error] = "Punch Update Failed. #{@punch.errors.full_messages.join(', ')}"
+    end
+
+    redirect_to punches_path
   end
 
   def destroy
+    if @punch.destroy
+      flash[:success] = "Punch removed successfully"
+    else
+      flash[:error] = "Punch removal Falied: #{@punch.errors.full_messages.join(', ')}"
+    end
+
+    redirect_to punches_path
   end
 
   private
 
-  def punches_params
+  def set_punch
+    @punch = current_user.punches.find(params[:id])
+  end
+
+  def punch_params
+    params.require(:punch).permit(:id, :punched_at)
   end
 end

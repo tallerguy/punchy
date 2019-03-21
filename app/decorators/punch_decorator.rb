@@ -1,8 +1,8 @@
 class PunchDecorator < Draper::Decorator
 
   TYPE_COLORS = {
-    clock_in: 'primary',
-    clock_out: 'success'
+    clock_in: 'success',
+    clock_out: 'danger'
   }
 
   delegate_all

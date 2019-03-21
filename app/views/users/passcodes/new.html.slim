@@ -1,0 +1,10 @@
+= render layout: 'devise/shared/wrapper' do
+  p Unlock
+  = form_for :user, url: unlock_users_passcodes_path, method: :post, html: { class: 'validated-form' } do |f|
+    .form-group
+      = f.password_field :passcode, class: 'form-control required'
+    .clearfix
+      .pull-left
+        = link_to "Email Login", unauthenticated_root_path, class: 'btn btn-secondary'
+      .pull-right
+        = f.submit 'Unlock', class: 'btn btn-primary'

@@ -27,16 +27,9 @@ gem 'underscore-rails'
 gem 'jquery-validation-rails'
 gem 'bootstrap-will_paginate'
 gem 'momentjs-rails'
+gem 'moment_timezone-rails'
 gem 'cocoon'
 gem 'gretel'
-gem 'bootstrap4-datetime-picker-rails'
-
-# Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
-gem 'image_processing', '~> 1.2'
-
-# Refactor tools
-gem 'immutable-struct'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

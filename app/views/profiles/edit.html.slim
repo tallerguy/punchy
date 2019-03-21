@@ -1,9 +1,11 @@
+- breadcrumb :profile
 .container
   .row
     .col-md-3
       .nav.flex-column.nav-pills aria-orientation="vertical" role="tablist"
         = link_to 'Profile', '#profile-info', class: 'nav-link active', id: 'profile-info-tab', aria: { controls: "profile-info", selected: "true" }, data: { toggle: "pill" }, role: "tab"
         = link_to 'Change Password', '#password-change', class: 'nav-link', id: 'password-change-tab', aria: { controls: "password-change", selected: "false" }, data: { toggle: "pill" }, role: "tab"
+        = link_to 'Change Pin', '#pin-change', class: 'nav-link', id: 'pin-change-tab', aria: { controls: "pin-change", selected: "false" }, data: { toggle: "pill" }, role: "tab"
     .col-md-6
       .tab-content
         #profile-info.tab-pane.fade.show.active aria-labelledby="profile-info-tab" role="tabpanel"
@@ -28,3 +30,9 @@
                   .col-sm-12
                     .actions
                       = f.submit 'Change Password', class: "btn btn-success col-md-12"
+        #pin-change.tab-pane.fade aria-labelledby="pin-change-tab" role="tabpanel"
+          .card
+            .card-body
+              p Your passcode is #{current_user.passcode}
+
+              = link_to 'Generate new passcode', users_passcodes_path, method: :post, class: 'btn btn-success'

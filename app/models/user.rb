@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   attr_accessor :current_password
 
+  after_create :generate_passcode
+
   state_machine :state, initial: :registered do
     event :clock_in do
       transition to: :clocked_in, from: [:registered, :clocked_out]
@@ -23,6 +25,7 @@ class User < ApplicationRecord
       transition to: :clocked_out, from: :clocked_in
     end
 
+    # We store all the state transitions of a user
     after_transition do |user, transition|
       user.state = user.state
       user.state_changes.create(
@@ -44,4 +47,9 @@ class User < ApplicationRecord
     [first_name, last_name].join(' ')
   end
 
+  # Code to create the passcode for a user.
+  # It generates random number, converto string to extract 4 digits after 0. and convert back to integer
+  def generate_passcode
+    update_attribute(:passcode, rand.to_s[2..5].to_i)
+  end
 end

@@ -2,7 +2,7 @@ crumb :root do
   link "Home", authenticated_root_path
 end
 
-crumb :punshes do
+crumb :punches do
   link "Punches", punches_path
   parent :root
 end
@@ -10,6 +10,11 @@ end
 crumb :punch do |punch|
   link punch.title, punch_path(punch.id)
   parent :punches
+end
+
+crumb :profile do
+  link "Profile", edit_profile_path
+  parent :root
 end
 
 # crumb :projects do

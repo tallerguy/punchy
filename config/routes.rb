@@ -11,6 +11,15 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  namespace :users do
+    resources :passcodes, only: [:new, :unlock, :lock, :create] do
+      collection do
+        delete :lock
+        post :unlock
+      end
+    end
+  end
+
   resources :punches
 
   resource :profile, only: [:edit, :update, :change_password] do

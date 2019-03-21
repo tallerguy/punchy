@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-md-8
+      .card
+        .card-header Edit Punch
+        .card-body
+          = form_for @punch, html: { class: 'validated-form' } do |f|
+            .form-group
+              .col-sm-12
+                = f.text_field :punched_at, class: 'form-control date-range-picker required', id: 'something', value: @punch.punched_at.strftime(Punch::DATE_FORMAT)
+            .form-group
+              .actions.clearfix
+                .pull-left
+                  = f.submit 'Update Punch Time', class: "btn btn-success col-md-12"
+                .pull-right
+                  = link_to 'Close', punches_path, class: 'btn btn-secondary'

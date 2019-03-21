@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   LINK_COLORS = {
-    clock_in: 'primary',
+    clock_in: 'success',
     clock_out: 'danger'
   }
 

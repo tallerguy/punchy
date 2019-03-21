@@ -1,11 +1,12 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container
     = link_to 'Punchy', authenticated_root_path, class: 'navbar-brand'
-    button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#customerNav" aria-controls="customerNav" aria-expanded="false" aria-label="Toggle navigation"
+    button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation"
       span class="navbar-toggler-icon"
-    #customerNav.collapse.navbar-collapse
+    #topNav.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item = link_to 'Punches', punches_path, class: 'nav-link'
+        li.nav-item = link_to 'Lock Screen', lock_users_passcodes_path, method: :delete, class: 'nav-link', data: { toggle: "popover", trigger: "hover", content: "Temporary logout. Login with pin" }
       ul.nav.navbar-nav.ml-auto
         li.dropdown
           a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"

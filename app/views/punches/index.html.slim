@@ -1,23 +1,37 @@
+- breadcrumb :punches
 .card
   .card-header Punches
   .card-body
-    table.table
-      thead
-        tr
-          th Type
-          th Punched At
-          th Created On
-          th Actions
-      tbody
-        - @punches.each do |punch|
+    - if @punches.present?
+      table.table
+        thead
           tr
-            td = punch.decorate.type_badge
-            td = punch.title
-            td = punch.decorate.formatted_date(punch.created_at)
-            td
-              = link_to edit_punch_path(punch), class: 'btn btn-primary' do
-                i.fa.fa-pencil
-              = link_to edit_punch_path(punch), class: 'btn btn-danger ml-3' do
-                i.fa.fa-trash
+            th Type
+            th Punched At
+            th Created On
+            th Actions
+        tbody
+          - @punches.each do |punch|
+            tr
+              td = punch.decorate.type_badge
+              td = punch.title
+              td = punch.decorate.formatted_date(punch.created_at)
+              td
+                = link_to edit_punch_path(punch), class: 'btn btn-primary' do
+                  i.fa.fa-pencil
+                = link_to punch_path(punch), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger ml-3' do
+                  i.fa.fa-trash
+    - else
+      p.lead.text-center No Puches Recorded
 .mt-4.pull-right
   = will_paginate @punches, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer
+
+
+#edit-modal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        h5.modal-title Edit Punch
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+      .modal-body

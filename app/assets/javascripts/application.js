@@ -18,8 +18,12 @@
 //= require jquery.validate
 //= require underscore
 //= require moment
-//= require tempusdominus-bootstrap-4
+//= require moment-timezone
 //= require cocoon
+//= require daterangepicker
 
 //= require toastr
 //= require global/utilities
+//= require punches
+
+moment.tz.setDefault('Eastern Time (US & Canada)');
