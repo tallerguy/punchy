@@ -16,6 +16,9 @@ class User < ApplicationRecord
 
   after_create :generate_passcode
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   state_machine :state, initial: :registered do
     event :clock_in do
       transition to: :clocked_in, from: [:registered, :clocked_out]
