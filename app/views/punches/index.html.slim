@@ -24,7 +24,8 @@
     - else
       p.lead.text-center No Puches Recorded
 .mt-4.pull-right
-  = will_paginate @punches, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer
+  - if @punches.present?
+    = will_paginate @punches, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer
 
 
 #edit-modal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1"

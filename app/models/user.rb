@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   has_many :state_changes
   has_many :punches, dependent: :destroy
-  has_many :clock_ins
-  has_many :clock_outs
 
   attr_accessor :current_password
 
