@@ -9,17 +9,17 @@ class PunchesController < ApplicationController
 #   # We store a punch based on the users current state
 #   # The punched at time is equal to the DateTime now.
 #   # This can then be edited by the user if needed
-#   def create
-#     @punch = current_user.punches.build(punched_at: DateTime.now)
+  def create
+    @punch = current_user.punches.build(punched_at: DateTime.now)
 
-#     if @punch.save
-#       flash[:success] = "Punch Recorded!"
-#     else
-#       flash[:error] = "Punch Not Recorded. #{@punch.errors.full_messages.join(', ')}"
-#     end
+    if @punch.save
+      flash[:success] = "Punch Recorded!"
+    else
+      flash[:error] = "Punch Not Recorded. #{@punch.errors.full_messages.join(', ')}"
+    end
 
-#     redirect_to authenticated_root_path
-#   end
+    redirect_to authenticated_root_path
+  end
 
 #   def edit
 #   end

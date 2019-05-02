@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_202229) do
+ActiveRecord::Schema.define(version: 2019_04_30_012934) do
 
   create_table "punches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "punch_type"
-    t.datetime "punched_at"
+    t.timestamp "punched_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_punches_on_user_id"

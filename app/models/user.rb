@@ -23,7 +23,7 @@ class User < ApplicationRecord
     end
 
     event :clock_out do
-      transition to: :clocked_out, from: :clocked_in
+      transition to: :clocked_out, from: [:clocked_in]
     end
 
     # We store all the state transitions of a user

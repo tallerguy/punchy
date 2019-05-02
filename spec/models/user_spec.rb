@@ -4,7 +4,7 @@ describe User, type: :model do
 
   subject { build(:user, first_name: 'John', last_name: 'Doe') }
 
-  describe "#associations" do
+  context "#associations" do
     it { should have_many(:state_changes) }
     it { should have_many(:punches) }
     it { should validate_presence_of(:first_name) }
@@ -23,9 +23,13 @@ describe User, type: :model do
     end
   end
 
-  context "when a user is created" do
+  describe "#generate_passcode" do
     it "should generate a passcode" do
       expect(subject.generate_passcode).to_not eq(nil)
     end
+  end
+
+  context "transitions" do
+    
   end
 end

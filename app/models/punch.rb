@@ -8,8 +8,9 @@ class Punch < ApplicationRecord
 
   belongs_to :user
 
-  # before_create :add_punch_type
-  # after_create :update_user_state
+  before_create :add_punch_type
+  after_create :add_punched_at
+  after_create :update_user_state
   # after_destroy :caliberate_user_state
 
   # validate :no_future_punch
@@ -20,20 +21,23 @@ class Punch < ApplicationRecord
 
   # private
 
+  def add_punched_at
+    touch :punched_at
+  end
   # # Punch Type determines if it is a clock in or clock out
   # # This is added when the punch record is crated based on the
   # # user state. If the user is clocked out then we set the punch
   # # type to clock_in and vice versa.
-  # def add_punch_type
-  #   self.punch_type = user.clocked_in? ? TYPES[:clock_out] : TYPES[:clock_in]
-  # end
+  def add_punch_type
+    self.punch_type = user.clocked_in? ? TYPES[:clock_out] : TYPES[:clock_in]
+  end
 
-  # # After a punch record is created we need to update the user state
-  # # if the punch type is clock_in the we move the user to clocked_in
-  # # and vice versa
-  # def update_user_state
-  #   user.clocked_in? ? user.clock_out : user.clock_in
-  # end
+  # After a punch record is created we need to update the user state
+  # if the punch type is clock_in the we move the user to clocked_in
+  # and vice versa
+  def update_user_state
+    user.clocked_in? ? user.clock_out : user.clock_in
+  end
 
   # # Make sure that the punch being updated doesnt create
   # # an invalid punch record
